@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Noun university exam" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <style>
+      .container {
+        background-color: white;
+        border-radius: 30px;
+        max-width: 1200px;
+        /* margin: 0 auto; */
+        padding: 30px;
+        width: 100%;
+        border: 3px solid black;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .parent-container {
+        padding-top: 11rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width: 70%;
+        margin: 15rem;
+        margin: 0 auto;
+        align-items: start;
+        justify-content: center;
+      }
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 30px;
+        color: #222;
+        background-color: lightgrey;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        flex-direction: column;
+      }
+    </style>
+  </head>
+  <body onload="a()">
+    <div class="parent-container">
+      <div class="container">
+        <!-- Thank you for exploring the remarkable Magic Mouse project developed by
+        Akinfaderin Adebowale. Supervised by Dr. Yusuf Sahabiali.
+        <br />
+        We are optimistic that this innovative endeavor will contribute
+        significantly to enhancing the quality of life for individuals with
+        visual impairments. By providing enhanced accessibility and facilitating
+        more effortless learning experiences, the project aspires to create a
+        positive impact on the lives of those it serves.
+        <br />
+        Thanks to ACETEL and the my great family and friends for the support and
+        input. We all can make a difference if we try. -->
+        <p>
+          Thank you for exploring the remarkable Magic Mouse project developed
+          by Akinfaderin Adebowale. Supervised by Dr. Yusuf Sahabiali.
+        </p>
+        <p>
+          We are optimistic that this innovative endeavor will contribute
+          significantly to enhancing the quality of life for individuals with
+          visual impairments. By providing enhanced accessibility and
+          facilitating more effortless learning experiences, the project aspires
+          to create a positive impact on the lives of those it serves.
+        </p>
+        <p>
+          Thanks to ACETEL and the my great family and friends for the support
+          and input. We all can make a difference if we try.
+        </p>
+      </div>
+    </div>
+
+    <script>
+      let speaking = true;
+      window.addEventListener("beforeunload", () => {
+        speaking = false; // Set the speaking flag to false
+        speechSynthesis.cancel(); // Cancel ongoing speech synthesis
+      });
+      const getTextContent = () => {
+        const finalPage = document.querySelector(".finalPage");
+        return finalPage.innerText;
+      };
+
+      const a = function () {
+        const text = getTextContent();
+        var msg = new SpeechSynthesisUtterance(text);
+        msg.rate = 0.7;
+        speechSynthesis.speak(msg); // "this" is not required here
+        console.log("yes");
+      };
+    </script>
+  </body>
+</html>

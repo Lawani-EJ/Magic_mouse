@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Noun university exam" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- <link rel="stylesheet" type="text/css" href="style.css" /> -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <style>
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  color: #333;
+  background-color: #f8f9fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+h1 {
+  margin: 10px 20px;
+  font-size: 24px;
+  text-align: right;
+  color: #222;
+}
+
+h2 {
+  margin: 20px 0;
+  font-size: 28px;
+  text-align: center;
+  color: #222;
+}
+
+.header {
+  border-bottom: 2px solid #ffc107;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  width: 80%;
+  padding: 10px 20px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.user-menu {
+  position: relative;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #222;
+}
+
+.user-menu i {
+  margin-left: 5px;
+}
+
+.user-menu a {
+  text-decoration: none;
+  color: #222;
+}
+
+.container {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.course-name {
+  font-size: 24px;
+  font-weight: bold;
+  color: #444;
+}
+
+.instructions {
+  font-size: 18px;
+  line-height: 1.6;
+  text-align: left;
+  padding: 10px;
+  background: #fff3cd;
+  border-left: 5px solid #ffc107;
+  border-radius: 5px;
+}
+
+button {
+  padding: 10px 18px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+button a {
+  text-decoration: none;
+  color: white;
+}
+
+.button-press {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 20px;
+}
+
+.profile img,
+.faq img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 15px 30px;
+  border-radius: 8px;
+  z-index: 9999;
+}
+
+.popup h2 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+    </style>
+    <script src="/js/script.js"></script>
+  </head>
+  <body onload="a()">
+    <div class="header">
+      <h1>EXAMINATION INSTRUCTIONS</h1>
+      <div class="user-menu">
+        <span id="user-name">Abraham <i class="fas fa-chevron-down"></i></span>
+      </div>
+      <div class="menu">
+        <div class="faq">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-square-fill" viewBox="0 0 16 16">
+            <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm8.93 4.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM8 5.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
+          </svg>
+        </div>
+        <div class="profile">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
+            <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="parent-container">
+      <div class="container">
+        <h2 class="course-name">
+          <b>COSC 108 Hardware System StudiesI(A+)</b>
+        </h2>
+        <p class="instructions">
+          <b>The exam information are as stated:</b><br />
+          - Time for the examination is 3 hours<br />
+          - Credit of this course is 1 Units<br />
+          - To call the attention of your supervisor press the rough button for
+          more than 3 seconds<br />
+          Best of luck!
+        </p>
+
+        <p><b>To start:</b> Press the SMOOTH BUTTON.</p>
+        <p>
+          <b>To Repeat:</b> Press the button located at the side of your device.
+        </p>
+        <div class="button-press">
+          <div id="result"></div>
+          <button style="display: none" id="submitButton">Submit</button>
+          <button style="display: none" id="repeatButton">Repeat</button>
+          <div id="score" style="display: none"></div>
+        </div>
+      </div>
+    </div>
+    <script>
+      let speaking = true;
+      window.addEventListener("beforeunload", () => {
+        speaking = false; // Set the speaking flag to false
+        speechSynthesis.cancel(); // Cancel ongoing speech synthesis
+      });
+      const getTextContent = () => {
+        const examTitle = document.querySelector(".course-name").innerText;
+        const examInfo = document.querySelector(".instructions").innerText;
+        const startInstruction =
+          document.querySelector("p:nth-child(3)").innerText;
+        const repeatInstruction =
+          document.querySelector("p:nth-child(4)").innerText;
+
+        return `  ${examTitle}\n\n${examInfo}\n\n${startInstruction}\n${repeatInstruction}`;
+      };
+
+      const a = function () {
+        const text = getTextContent();
+        var msg = new SpeechSynthesisUtterance(text);
+        msg.rate = 0.7;
+        this.speechSynthesis.speak(msg);
+        console.log("yes");
+      };
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+      // Client-side code
+      var socket = io();
+
+      // Handle Next button click
+      function handleNext() {
+        window.location.href = "http://localhost:5500/question1";
+      }
+
+      // Handle Repeat button click
+      function handleRepeat() {
+        window.location.reload();
+      }
+
+      // Attach click event listeners to the buttons
+      submitButton.addEventListener("click", function () {
+        handleNext();
+      });
+
+      repeatButton.addEventListener("click", function () {
+        handleRepeat();
+      });
+
+      socket.on("disconnect", function () {
+        console.log("Disconnected from server");
+      });
+      socket.on("counterUpdate", function (count) {
+        console.log("Counter value received:", count);
+      });
+
+      socket.on("arduinoButtonNext", function () {
+        console.log("Next button pressed");
+        handleNext();
+      });
+
+      // Socket.IO 'arduinoButtonRepeat' event
+      socket.on("arduinoButtonRepeat", function () {
+        console.log("Repeat button pressed");
+        handleRepeat();
+      });
+      // Socket.IO 'arduinoButtonHelp' event
+      socket.on("arduinoButtonHelp", function () {
+        console.log("Help button pressed");
+      });
+    </script>
+
+    <script src="popup.js"></script>
+    <script src="TextToSpeech.js"></script>
+  </body>
+</html>

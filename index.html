@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  <title>Arduino Data</title>
+</head>
+<body>
+  <h1>Arduino Data:</h1>
+  <div id="arduinoData">Waiting for data...</div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  
+  <!-- Add Socket.IO script -->
+  <script src="https://cdn.socket.io/4.0.1/socket.io.min.js"></script>
+
+  <script>
+    // Client-side code
+    var socket = io('http://localhost:5500');
+
+
+    // Listen for data from the server
+    socket.on("arduinoData", function(data) {
+      console.log("Data from Arduino:", data);
+
+      // Display the data in the <div> with id "arduinoData"
+      document.getElementById("arduinoData").textContent = data;
+    });
+
+    // Handle Next button click (example for the buttons you mentioned)
+    function handleNext() {
+      window.location.href = "http://localhost:5500/question1";
+    }
+
+    // Handle Repeat button click
+    function handleRepeat() {
+      window.location.reload();
+    }
+
+    // Attach click event listeners to the buttons
+    document.getElementById("submitButton").addEventListener("click", function () {
+      handleNext();
+    });
+
+    document.getElementById("repeatButton").addEventListener("click", function () {
+      handleRepeat();
+    });
+
+    // Socket.IO event listeners
+    socket.on("connect", function () {
+      console.log("Connected to server");
+    });
+
+    socket.on("disconnect", function () {
+      console.log("Disconnected from server");
+    });
+
+    socket.on("arduinoButtonNext", function () {
+      console.log("Next button pressed");
+      handleNext();
+    });
+
+    socket.on("arduinoButtonRepeat", function () {
+      console.log("Repeat button pressed");
+      handleRepeat();
+    });
+
+    socket.on("arduinoButtonHelp", function () {
+      console.log("Help button pressed");
+    });
+  </script>
+</body>
+</html>

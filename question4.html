@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Noun university exam" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <style>
+      /* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+/* Body Styling */
+body {
+  background: #f0f2f5;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 900px;
+  padding: 15px 20px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+  border-bottom: 3px solid #ffcc00;
+}
+
+.header h1 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #222;
+}
+
+.user-menu {
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.user-menu span {
+  color: #333;
+}
+
+.user-menu i {
+  transition: transform 0.2s ease-in-out;
+}
+
+.user-menu:hover i {
+  transform: rotate(180deg);
+}
+
+/* Profile & FAQ Icons */
+.profile img,
+.faq img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.profile img:hover,
+.faq img:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Main Content */
+.container {
+  width: 100%;
+  max-width: 800px;
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+/* Question */
+.question-number {
+  font-size: 20px;
+  font-weight: bold;
+  color: #555;
+}
+
+#question {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+/* Answer Options */
+.option {
+  display: flex;
+  align-items: center;
+  background: #f9f9f9;
+  padding: 14px;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.option:hover {
+  background: #eaeaea;
+  border-color: #4caf50;
+  transform: scale(1.02);
+}
+
+.option input {
+  margin-right: 12px;
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+/* Correct & Wrong Answers */
+.correct {
+  color: #2e7d32;
+  font-weight: bold;
+}
+
+.wrong {
+  color: #d32f2f;
+  font-weight: bold;
+}
+
+/* Buttons */
+.button-press {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+button {
+  padding: 12px 20px;
+  background-color: #4caf50;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: #388e3c;
+  transform: translateY(-2px);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+button:disabled {
+  background-color: #bdbdbd;
+  cursor: not-allowed;
+}
+
+/* Score & Result */
+#result {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+}
+
+#score {
+  font-size: 22px;
+  font-weight: bold;
+  color: #222;
+  text-align: center;
+}
+
+/* Popup Message */
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: 25px;
+  border-radius: 10px;
+  z-index: 1000;
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.popup h2 {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.cancel-button {
+  background-color: #ff4444;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.cancel-button:hover {
+  background-color: #cc0000;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .container {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .button-press {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .popup {
+    width: 85%;
+  }
+}
+
+    </style>
+  </head>
+  <body onload="a()">
+    <div class="header">
+      <h1>Examination Questions</h1>
+      <div class="user-menu">
+        <span id="user-name">Abraham<i class="fas fa-chevron-down"></i></span>
+      </div>
+      <div class="menu">
+        <div class="faq">
+          <img src="/faq.png" alt="Help Icon" />
+        </div>
+        <div class="profile">
+          <img src="/profile.png" alt="profile" />
+        </div>
+      </div>
+    </div>
+    <div class="parent-container">
+      <div class="container">
+        <h1 class="question-number" style="text-align: left">QUESTION 4</h1>
+        <div id="question"></div>
+        <br />
+        <label class="option">
+          <input type="radio" name="option" id="option1" />
+          <span></span>
+        </label>
+        <br />
+        <label class="option">
+          <input type="radio" name="option" id="option2" />
+          <span></span>
+        </label>
+        <br />
+        <label class="option">
+          <input type="radio" name="option" id="option3" />
+          <span></span>
+        </label>
+        <br />
+        <label class="option">
+          <input type="radio" name="option" id="option4" />
+          <span></span>
+        </label>
+      </div>
+      <div class="button-press">
+        <div id="result"></div>
+        <button style="display: none" id="submitButton">Submit</button>
+        <button style="display: none" id="repeatButton">Repeat</button>
+        <div id="score" style="display: none"></div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      let speaking = true;
+      window.addEventListener("beforeunload", () => {
+        speaking = false; // Set the speaking flag to false
+        speechSynthesis.cancel(); // Cancel ongoing speech synthesis
+      });
+      // Client-side code
+      var socket = io();
+
+      // Select the question and options elements
+      const questionElement = document.getElementById("question");
+      const option1Element = document.getElementById("option1");
+      const option2Element = document.getElementById("option2");
+      const option3Element = document.getElementById("option3");
+      const option4Element = document.getElementById("option4");
+      const resultElement = document.getElementById("result");
+      const submitButton = document.getElementById("submitButton");
+      const repeatButton = document.getElementById("repeatButton");
+      const scoreElement = document.getElementById("score");
+
+      // Questions and answers data
+
+      const questions = [
+        {
+          question: "what is the value of 10 minus 5?",
+          options: ["5", "Delta", "-100", "Lagos"],
+          answer: 1,
+        },
+      ];
+
+      
+      let currentQuestionIndex = 0;
+      let isAnswered = false;
+      let score = 0;
+
+      // Function to load the current question and options
+      function loadQuestion() {
+        const currentQuestion = questions[currentQuestionIndex];
+        questionElement.innerHTML = currentQuestion.question;
+        option1Element.nextElementSibling.innerHTML =
+          currentQuestion.options[0];
+        option2Element.nextElementSibling.innerHTML =
+          currentQuestion.options[1];
+        option3Element.nextElementSibling.innerHTML =
+          currentQuestion.options[2];
+        option4Element.nextElementSibling.innerHTML =
+          currentQuestion.options[3];
+        resetOptions();
+        isAnswered = false;
+        resultElement.innerText = "";
+        resultElement.classList.remove("correct", "wrong");
+        submitButton.disabled = false;
+        //
+        repeatButton.disabled = true;
+      }
+
+      // Reset the selected options
+      function resetOptions() {
+        option1Element.checked = false;
+        option2Element.checked = false;
+        option3Element.checked = false;
+        option4Element.checked = false;
+      }
+
+      // Update the selected option based on the button counter value
+      function updateSelectedOption(selectedOption) {
+        resetOptions();
+
+        switch (selectedOption) {
+          case 1:
+            option1Element.checked = true;
+            break;
+          case 2:
+            option2Element.checked = true;
+            break;
+          case 3:
+            option3Element.checked = true;
+            break;
+          case 4:
+            option4Element.checked = true;
+            break;
+          default:
+            // Handle invalid selectedOption value
+            break;
+        }
+      }
+
+      // Handle Next button click
+      function handleNext() {
+        console.log("HN");
+        currentQuestionIndex++;
+        if (currentQuestionIndex < questions.length) {
+          loadQuestion();
+        } else {
+          // All questions have been answered
+          window.location.href = "http://localhost:5500/finalpage";
+        }
+      }
+
+      // Handle option selection
+      function handleOptionSelection(selectedOption) {
+        function speakConfirmationMessage(selectedOption) {
+          const optionElement = document.getElementById(
+            `option${selectedOption}`
+          );
+          const optionText = optionElement.nextElementSibling.innerText;
+          const confirmationMessage = `You have selected option ${selectedOption}, the value of option ${selectedOption} is  ${optionText}. If you want to continue with that answer press the smooth button but if you are not sure and want to answer the question again press the repeat button located at the side of your device`;
+          const msg = new SpeechSynthesisUtterance(confirmationMessage);
+          msg.rate = 0.7;
+          speechSynthesis.speak(msg);
+        }
+        speakConfirmationMessage(selectedOption);
+
+        if (isAnswered) return;
+
+        updateSelectedOption(selectedOption);
+        isAnswered = true;
+        submitButton.disabled = true;
+
+        repeatButton.disabled = false;
+
+        // Compare selectedOption with the correct answer
+        const currentQuestion = questions[currentQuestionIndex];
+        const correctAnswer = currentQuestion.answer;
+        const isCorrect = selectedOption === correctAnswer;
+
+        if (isCorrect) {
+          console.log("question1-correct");
+          //   resultElement.innerText = "Correct answer!";
+          //   resultElement.classList.remove("wrong");
+          //   resultElement.classList.add("correct");
+          score++;
+        } else {
+          console.log("question1-wrong");
+          //   resultElement.innerText = "Wrong answer!";
+          //   resultElement.classList.remove("correct");
+          //   resultElement.classList.add("wrong");
+        }
+      }
+      // Handle Repeat button click
+      function handleRepeat() {
+        resetOptions();
+        location.reload();
+        console.log("yes i am a boy");
+        a();
+      }
+
+      // Display the final score
+      function displayScore() {
+        // Create an <h1> element
+        var heading = document.createElement("h1");
+        heading.textContent = "Your score: " + score + "/" + questions.length;
+
+        // Clear the existing content of the body
+        document.body.innerHTML = "";
+
+        // Append the <h1> element to the body
+        document.body.appendChild(heading);
+      }
+
+      // Attach click event listeners to the options
+      option1Element.addEventListener("click", function () {
+        handleOptionSelection(1);
+      });
+
+      option2Element.addEventListener("click", function () {
+        handleOptionSelection(2);
+      });
+
+      option3Element.addEventListener("click", function () {
+        handleOptionSelection(3);
+      });
+
+      option4Element.addEventListener("click", function () {
+        handleOptionSelection(4);
+      });
+
+      // Attach click event listeners to the buttons
+      submitButton.addEventListener("click", function () {
+        // Get the selected option
+        const selectedOption = document.querySelector(
+          'input[name="option"]:checked'
+        );
+        if (selectedOption) {
+          handleOptionSelection(parseInt(selectedOption.id.slice(-1)));
+        }
+      });
+
+      repeatButton.addEventListener("click", function () {
+        handleRepeat();
+        // Clear the score
+        score = 0;
+      });
+
+      // Socket.IO event listeners
+      socket.on("connect", function () {
+        console.log("Connected to server");
+      });
+
+      socket.on("disconnect", function () {
+        console.log("Disconnected from server");
+      });
+
+      // Socket.IO 'data' event
+      // Socket.IO 'data' event
+      socket.on("data", function (data) {
+        console.log("Received from Node.js:", data);
+
+        const option = Number(data); // Ensure it's a number
+        if (!isNaN(option)) {
+          updateSelectedOption(option);
+          handleOptionSelection(option);
+        }
+      });
+
+      // Socket.IO 'arduinoButtonNext' event
+      socket.on("arduinoButtonNext", function () {
+        console.log("Next button pressed");
+        handleNext();
+      });
+
+      // Socket.IO 'arduinoButtonRepeat' event
+      socket.on("arduinoButtonRepeat", function () {
+        console.log("Repeat button pressed");
+        handleRepeat();
+        score = 0;
+      });
+      // Function to show the help popup
+      function showPopup() {
+        const instructions = [
+          "CALL THE ATTENTION OF SUPERVISOR",
+          "READ INSTRUCTIONS AGAIN",
+          "READ THIS QUESTION AGAIN",
+          "RETAKE THIS CURRENT QUESTION",
+          "RETAKE ANOTHER QUESTION",
+          "GET TO KNOW AMOUNT OF TIME LEFT",
+          "READ ALL THE HELP OPTIONS AGAIN",
+          // Add more instructions as needed
+        ];
+
+        const popup = document.createElement("div");
+        popup.classList.add("popup");
+
+        const header = document.createElement("h2");
+        header.textContent = "WHAT DO YOU NEED HELP WITH?";
+        popup.appendChild(header);
+
+        const instructionList = document.createElement("ol");
+        instructions.forEach((instruction) => {
+          const listItem = document.createElement("li");
+          listItem.textContent = instruction;
+          instructionList.appendChild(listItem);
+        });
+
+        popup.appendChild(instructionList);
+        setTimeout(function () {
+          popup.remove();
+        }, 4000); // 4 seconds in milliseconds
+
+        document.body.appendChild(popup);
+      }
+
+      // Socket.IO 'arduinoButtonHelp' event
+      socket.on("arduinoButtonHelp", function () {
+        // resultElement.classList.remove("correct", "wrong");
+        console.log("Help button pressed");
+        showPopup(); // Call the showPopup() function to display the help popup
+      });
+
+      // Initial question load
+
+      loadQuestion();
+    </script>
+    <script>
+       const firstcommand = () => {
+        const message = `To select option one, press the rough button once, To select option two, press the rough button twice, To select option three, press the rough button three times, To select option four, press the rough button four times and press the smooth button to submit`;
+          const msg = new SpeechSynthesisUtterance(message);
+          msg.rate = 0.7;
+          this.speechSynthesis.speak(msg);
+      
+
+        return `${message}`;
+      };
+      const getTextContent = () => {
+         
+        const examTitle = document.querySelector(".question-number").innerText;
+        const examInfo = document.querySelector("#question").innerText;
+        const options = Array.from(
+          document.querySelectorAll(".option span")
+        ).map((span) => span.innerText);
+
+        return `${examTitle}\n\n${examInfo}`;
+      };
+
+      const speakOptions = () => {
+        const options = Array.from(
+          document.querySelectorAll(".option span")
+        ).map((span) => span.innerText);
+
+        let index = 0;
+
+        function speakOption() {
+          if (index >= options.length) {
+            return; // Stop recursion if all options have been spoken
+          }
+          
+          for (let i = 1; i <= 4; i++) {
+            
+            const option = `Option ${i} is  ${options[index]}`;
+            const msg = new SpeechSynthesisUtterance(option);
+            msg.rate = 0.7;
+
+            this.speechSynthesis.speak(msg);
+
+            index++;
+
+            const timer = setTimeout(speakOption, 2000); // 2-second delay before speaking the next option
+          }
+        }
+
+        speakOption(); // Start speaking the options
+
+      
+      };
+
+      const a = function () {
+      firstcommand();
+ 
+        const text = getTextContent();
+        var msg = new SpeechSynthesisUtterance(text);
+        msg.rate = 0.7;
+        this.speechSynthesis.speak(msg);
+        console.log("yes");
+
+        setTimeout(speakOptions, 2000); // Start speaking the options after a 2-second delay
+      };
+    </script>
+
+    <script>
+      // Function to simulate page refresh and space bar key press
+      function simulateRefreshAndSpaceBarPress() {
+        console.log("yeljdanin");
+
+        var spacePressEvent = new KeyboardEvent("keydown", { key: " " });
+        document.dispatchEvent(spacePressEvent);
+      }
+    </script>
+  </body>
+</html>
