@@ -25,7 +25,7 @@ MagicMouse is a Node.js project that enables real-time communication between a s
 npm install
 ```
 
-# Dependencies
+## Dependencies
 1. The project relies on the following Node.js modules:
 
 2. Express (^4.21.2) – Lightweight web framework.
