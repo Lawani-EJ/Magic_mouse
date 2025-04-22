@@ -47,9 +47,6 @@ node testSerial.js
 ```
 - The server will now listen for serial input and handle WebSocket communication.
 
-# License
-This project is licensed under the ISC license.
-
 ## Contribution
 Feel free to fork and contribute to this project by creating pull requests.
 
