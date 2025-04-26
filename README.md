@@ -1,6 +1,6 @@
 # Magic Mouse (An Aurdinio device that is used to assist blind persons in taking examinations on a website)
 MagicMouse is a Node.js project that enables real-time communication between a server and clients using WebSockets. It also integrates serial port communication, making it useful for hardware-related applications.
-
+<!--
 ## Included Features
 1. Express.js: Handles HTTP requests and serves as the backend framework.
 
@@ -49,4 +49,4 @@ node testSerial.js
 
 ## Contribution
 Feel free to fork and contribute to this project by creating pull requests.
-
+-->
