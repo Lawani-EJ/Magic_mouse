@@ -1,5 +1,5 @@
 # Magic-Mouse (Arduino Device to Assist the Blind in Taking Examination on a Webpage)
-### Our Overview📚 
+### Our Overview 
 The project mainly focused on building an Arduino-based system designed to assist visually impaired students during examinations was conducted on a webpage.
 By integrating hardware components like Arduino Uno, buttons, capacitors, and jumper wires, the hardware system collects user input and communicates with a web server, enabling blind users to interact with online exam platforms more efficiently.
 This project is called `MagicMouse` which is a Node.js project that enables real-time communication between a server and clients using WebSockets. It also integrates serial port communication, making it useful for hardware-related applications.
