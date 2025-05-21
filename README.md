@@ -12,7 +12,7 @@ This project is called `MagicMouse` which is a Node.js project that enables real
     - Hardware Setup
     - Arduino code
     - Web Server Setup
-- Conclusion
+- Conclusion.
 
 ## 🛠 System Specifications
 The system specifications describe the complete set of hardware components and software functionality and purpose. It includes a technical overview of the system units and their usage.
