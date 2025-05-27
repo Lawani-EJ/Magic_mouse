@@ -26,6 +26,17 @@ The specifications for the primary hardware components are listed below;
 - Buttons
 - Capacitors
 - Soldering Iron
+
+# Brief description of the materials used:
+## Availability of a laptop that supports Arduino uno and serial port connection:
+A laptop serves as the command center for your Arduino adventures. It houses the Arduino IDE (Integrated Development Environment), a software program where you write code (instructions) for your Arduino board. The laptop also facilitates the serial port connection, a communication channel that allows you to upload code from your computer to the Arduino. 
+
+- The laptop minimum specifications would be:
+    - Minimum Intel Core i3 or AMD Ryzen 3 (dual core) processor
+    - Minimum 4 GB RAM
+    - USB Port: You'll need at least one USB port to connect your Arduino board to the laptop.
+    - Minimum 128 GB Hard Disk Drive (HDD) for faster loading times and overall better performance.
+
 <!--
 ## Included Features
 1. Express.js: Handles HTTP requests and serves as the backend framework.
