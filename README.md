@@ -53,6 +53,7 @@ A laptop serves as the command center for your Arduino adventures. It houses the
 - It's like a construction zone for circuits, perfect for experimenting and building prototypes.
 - Even with a need to swap a sensor is not a problem as it is as easy as to just pop it out and try a different one. Feeling adventurous with a new configuration? The breadboard encourages quick and easy circuit modifications.
 - With the breadboard as your canvas, bringing your ideas to life becomes a breeze, allowing you to test, build, and refine your electronics projects with ease.
+
  
 <!--
 ## Included Features
