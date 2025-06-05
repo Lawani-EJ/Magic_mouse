@@ -54,6 +54,8 @@ A laptop serves as the command center for your Arduino adventures. It houses the
 - Even with a need to swap a sensor is not a problem as it is as easy as to just pop it out and try a different one. Feeling adventurous with a new configuration? The breadboard encourages quick and easy circuit modifications.
 - With the breadboard as your canvas, bringing your ideas to life becomes a breeze, allowing you to test, build, and refine your electronics projects with ease.
 
+## JumpWires:
+Jumper wires are simply the electrical bridges that bring your circuit to life. These short, flexible wires are the workhorses of the breadboard, each boasting connectors at both ends for seamless integration. This flexibility is crucial for circuit organization. By assigning specific colors to different voltage levels or functions, you can quickly identify potential issues immediately. It is vital for connecting various components on your breadboard. These short, flexible wires come with connectors at both ends, allowing you to easily plug them into the breadboard holes
  
 <!--
 ## Included Features
