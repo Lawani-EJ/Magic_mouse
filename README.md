@@ -1,4 +1,19 @@
-# Magic-Mouse (Arduino Device to Assist the Blind in Taking Examination on a Webpage)
+<p align="center">
+    <a href="#" style="display: block;" align="center">
+        <img src="https://myschoolportal.net/blog/wp-content/uploads/2024/10/babcock-university-logo.png" alt="sosuke aizen" width="60%" />
+    </a>
+</p>
+
+<p align="center">
+    <a href="#" style="display: block;" align="center">
+        <img src="https://cdn-images-1.medium.com/max/280/1*-__XowPJ8-8Q48Q6XODjag@2x.png" alt="sosuke aizen" width="60%" />
+    </a>
+</p>
+
+# BABCOCK UNIVERSITY FINAL YEAR PROJECT
+###  SUBMITTED TO: 
+THE DEPARTMENT OF COMPUTER SCIENCE SCHOOL OF COMPUTING AND ENGINEERING SCIENCES BABCOCK UNIVERSITY, ILISAN REMO OGUN STATE, NIGERIA
+## Magic-Mouse (An Arduino Device used to Assist the Blind in Taking Examination on a Webpage)
 ### Our Overview 
 The project mainly focused on building an Arduino-based system designed to assist visually impaired students during examinations was conducted on a webpage.
 By integrating hardware components like Arduino Uno, buttons, capacitors, and jumper wires, the hardware system collects user input and communicates with a web server, enabling blind users to interact with online exam platforms more efficiently.
