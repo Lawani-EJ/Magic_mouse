@@ -77,7 +77,10 @@ The soldering iron is a tool for tasking connections While breadboards are perfe
 While breadboards are excellent for prototyping, for permanent connections, a soldering iron comes into play. This tool melts a metal alloy called solder, creating strong electrical and physical bonds between components. Soldering offers a more durable solution for building your electronics projects.
 
 # System Description
- 
+### The Hardware Setup
+The foundation for data transmission lies in establishing a physical connection between the Arduino and the web server or network device. This involves two steps:
+ 1. Arduino-Computer Connection: Connect the Arduino to the computer using a USB cable. This connection allows for programming the Arduino and uploading the necessary code.
+ 2. Arduino-Network Connection: Establish a network connection between the Arduino and the web server or network device using an Ethernet shield or Wi-Fi module. This connection will enable the Arduino     to send data to the web server
 <!--
 ## Included Features
 1. Express.js: Handles HTTP requests and serves as the backend framework.
