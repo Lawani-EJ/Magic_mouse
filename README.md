@@ -81,6 +81,9 @@ While breadboards are excellent for prototyping, for permanent connections, a so
 The foundation for data transmission lies in establishing a physical connection between the Arduino and the web server or network device. This involves two steps:
  1. Arduino-Computer Connection: Connect the Arduino to the computer using a USB cable. This connection allows for programming the Arduino and uploading the necessary code.
  2. Arduino-Network Connection: Establish a network connection between the Arduino and the web server or network device using an Ethernet shield or Wi-Fi module. This connection will enable the Arduino     to send data to the web server
+
+### Arduino Code
+For the implementation of this project, the Arduino IDE was employed. The Arduino IDE, which was already installed on the machine and was updated to the latest version. the required libraries such as the SPI and Servo were installed. The setup and the code development area were used to compile and verify the code with the forward arrow located at the top left of the Arduino IDE application as illustrated. The Arduino code was executed, compiled and all problems were debugged.
 <!--
 ## Included Features
 1. Express.js: Handles HTTP requests and serves as the backend framework.
