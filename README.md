@@ -150,6 +150,12 @@ void loop() {
   }
 }
 ```
+The Arduino microcontroller acts as the data collector, responsible for acquiring sensor data, processing information, and transmitting it to the web server. The Arduino code typically encompasses the following:
+1. Library Inclusion: Include the necessary libraries for serial communication and web connectivity. These libraries provide the functions and tools for interacting with the hardware and sending data over the network.
+2. Data Variable Definition: Define a variable to store the sensor data or button count. This variable will hold the information to be transmitted to the web server.
+3. Sensor Data Acquisition: Read the sensor data or button state using appropriate Arduino functions. These functions interact with the connected sensors or buttons to retrieve the current values.
+4. Data Conversion: Convert the sensor data or button count into a string format for transmission. Since the web server expects data in text form, converting numerical values to strings ensures compatibility.
+5. Data Transmission: Send the string data using the Serial.println() function. This function transmits the converted data over the serial port, establishing a connection with the web server.
 
 <!--
 ## Included Features
