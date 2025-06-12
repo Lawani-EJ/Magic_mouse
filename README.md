@@ -157,6 +157,13 @@ The Arduino microcontroller acts as the data collector, responsible for acquirin
 4. Data Conversion: Convert the sensor data or button count into a string format for transmission. Since the web server expects data in text form, converting numerical values to strings ensures compatibility.
 5. Data Transmission: Send the string data using the Serial.println() function. This function transmits the converted data over the serial port, establishing a connection with the web server.
 
+### Web server setup:
+The web server acts as the intermediary,  receiving data from the aurduino and making it accesible to the user interface setting up the web server involves:
+1. Web Server Software Installation: Install a web server software such as Node.js or Apache. These software packages provide the infrastructure for handling incoming data and serving webpages.
+2. Web Server Script Creation: Create a web server script to handle incoming data from the Arduino. This script will listen for data on a specific port.
+3. Socket Connection Establishment: Open a socket connection to listen for incoming data on the designated port. The socket acts as a virtual channel through which the web server receives data from the Arduino.
+
+
 <!--
 ## Included Features
 1. Express.js: Handles HTTP requests and serves as the backend framework.
