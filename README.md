@@ -233,7 +233,19 @@ port.on("error", (err) => {
 server.listen(5500, () => {
   console.log("Server is running on http://localhost:5500");
 });
+
 ```
+### Webpage Code
+The webpage serves as the visual representation of the data received from the Arduino. It utilizes JavaScript to establish a connection with the web server, receive data, and update the user interface accordingly  This typically involves:
+
+1.	JavaScript Library Inclusion:
+    Include a JavaScript library for handling WebSocket communication. WebSocket provides a bi-directional communication channel between the webpage and     the web server.
+
+2.	WebSocket Connection Establishment: Establish a WebSocket connection with the web server. This connection allows the webpage to receive real-time data updates from the Arduino.
+
+3.	Data Reception: Listen for incoming data events using the WebSocket. On ('data') function. This function triggers whenever data is received from the web server.
+4.	Data Parsing: Parse the received data into a meaningful format. The received data may be in a raw format and parsing it into a usable form is essential for the webpage.
+5.	Webpage Update: Update the webpage elements based on the received data. This may involve manipulating text, images, or other interactive elements to reflect the sensor data or button states.
 <!--
 ## Included Features
 1. Express.js: Handles HTTP requests and serves as the backend framework.
