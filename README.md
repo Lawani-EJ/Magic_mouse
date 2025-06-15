@@ -246,6 +246,13 @@ The webpage serves as the visual representation of the data received from the Ar
 3.	Data Reception: Listen for incoming data events using the WebSocket. On ('data') function. This function triggers whenever data is received from the web server.
 4.	Data Parsing: Parse the received data into a meaningful format. The received data may be in a raw format and parsing it into a usable form is essential for the webpage.
 5.	Webpage Update: Update the webpage elements based on the received data. This may involve manipulating text, images, or other interactive elements to reflect the sensor data or button states.
+
+# Circuit Diagram
+
+![image](https://github.com/user-attachments/assets/03e9b6ac-29a5-4af7-8971-45a28eb512c5)
+
+The above circuit diagram represents the system that empowers visually impaired users to navigate webpages and select answers independently. This project utilizes an Arduino Uno as the brain, connected to a laptop and a specific webpage. Three buttons act as the user interface, allowing control over webpage navigation and answer selection.
+The circuit revolves around the Arduino Uno and its connection points as shown 
 <!--
 ## Included Features
 1. Express.js: Handles HTTP requests and serves as the backend framework.
