@@ -252,7 +252,16 @@ The webpage serves as the visual representation of the data received from the Ar
 ![image](https://github.com/user-attachments/assets/03e9b6ac-29a5-4af7-8971-45a28eb512c5)
 
 The above circuit diagram represents the system that empowers visually impaired users to navigate webpages and select answers independently. This project utilizes an Arduino Uno as the brain, connected to a laptop and a specific webpage. Three buttons act as the user interface, allowing control over webpage navigation and answer selection.
-The circuit revolves around the Arduino Uno and its connection points as shown 
+The circuit revolves around the Arduino Uno and its connection points as shown. Each of the three buttons has one leg connected to a designated Arduino port: Port 2, Port 3, and Port 4 as shown. These ports essentially act as input channels for the Arduino. The other leg of each button connects to the Arduino's ground pin. This completes the circuit for each button, allowing them to send signals when pressed.
+However, a small but crucial component sits alongside each button-to-ground connection: a capacitor. These tiny guardians play a vital role in "debouncing." When a button is pressed, it might register multiple presses due to electrical fluctuations. The capacitor acts like a temporary battery, absorbing and releasing this electrical bounce, ensuring a clean, single signal reaches the Arduino. Without debouncing, the system might misinterpret rapid presses.
+The Arduino Uno connects to a laptop via an Arduino uno cable as shown. This connection establishes a vital communication channel called a serial port. Imagine it as a dedicated pathway for the Arduino to transmit data (button presses in this case) to the laptop.
+These button when pressed translate into actions on the webpage. The laptop will run a script specifically designed for the chosen webpage. This script functions like a translator, constantly listening for incoming data (button presses) from the Arduino through the serial port connection.
+The code written on both the Arduino and the webpage script translates button presses into specific actions:
+Port 2 (Go to Next Page): Pressing the button connected to Port 2 signals the webpage script to navigate to the next page of the content.
+Port 3 (Pick Answer): The number of times the button connected to Port 3 is pressed can be interpreted as the answer choice. The script then automatically selects that answer on a form or quiz.
+Port 4 (Repeat Page): Pressing the button on Port 4 instructs the script to refresh the current webpage, allowing the user to review the content again.
+This system offers significant value for visually impaired users. By translating button presses into clear actions, it empowers them to navigate webpages and participate in online activities independently. They gain control over their web experience, fostering greater autonomy and inclusivity.
+
 <!--
 ## Included Features
 1. Express.js: Handles HTTP requests and serves as the backend framework.
