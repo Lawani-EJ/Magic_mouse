@@ -262,6 +262,10 @@ Port 3 (Pick Answer): The number of times the button connected to Port 3 is pres
 Port 4 (Repeat Page): Pressing the button on Port 4 instructs the script to refresh the current webpage, allowing the user to review the content again.
 This system offers significant value for visually impaired users. By translating button presses into clear actions, it empowers them to navigate webpages and participate in online activities independently. They gain control over their web experience, fostering greater autonomy and inclusivity.
 
+
+# IMPLEMENTATION AND TESTING
+The hardware block diagram was used to obtain the right arrangement of the components and their correct connections. The Arduino uno was programmed using the Arduino IDE before it was simulated. After the correct corrections were done, it was run, and when necessary, troubleshooting and debugging took place to treat any issue stumbled upon. The simulations in Proteus can be seen:
+
 <!--
 ## Included Features
 1. Express.js: Handles HTTP requests and serves as the backend framework.
