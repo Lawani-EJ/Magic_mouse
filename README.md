@@ -266,6 +266,8 @@ This system offers significant value for visually impaired users. By translating
 # IMPLEMENTATION AND TESTING
 The hardware block diagram was used to obtain the right arrangement of the components and their correct connections. The Arduino uno was programmed using the Arduino IDE before it was simulated. After the correct corrections were done, it was run, and when necessary, troubleshooting and debugging took place to treat any issue stumbled upon. The simulations in Proteus can be seen:
 
+![image](https://github.com/user-attachments/assets/45784ca8-c24d-412e-b3b0-4fa8e88ead66)
+
 <!--
 ## Included Features
 1. Express.js: Handles HTTP requests and serves as the backend framework.
