@@ -268,6 +268,11 @@ The hardware block diagram was used to obtain the right arrangement of the compo
 
 ![image](https://github.com/user-attachments/assets/45784ca8-c24d-412e-b3b0-4fa8e88ead66)
 
+## IMPLEMENTATION
+The implementation section is divided into two sections: 
+1.	Software Implementation
+2.	Hardware Implementation
+
 <!--
 ## Included Features
 1. Express.js: Handles HTTP requests and serves as the backend framework.
