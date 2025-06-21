@@ -273,6 +273,9 @@ The implementation section is divided into two sections:
 1.	Software Implementation
 2.	Hardware Implementation
 
+# SOFTWARE IMPLEMENTATION
+
+
 <!--
 ## Included Features
 1. Express.js: Handles HTTP requests and serves as the backend framework.
