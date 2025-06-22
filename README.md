@@ -274,8 +274,15 @@ The implementation section is divided into two sections:
 2.	Hardware Implementation
 
 # SOFTWARE IMPLEMENTATION
+The programming aspect of the project was implemented using the Arduino Integrated Development Environment (IDE) on a computer. The C++ programming language served as the foundation for the project's code. Throughout the design and development phases, established software engineering practices were employed to ensure the project's success.
+These practices included the following:
 
+1.	Specification: This stage involved clearly outlining and comprehending the functionalities the system was designed to perform, while also identifying any potential limitations in the system's operation and design. This phase encompassed requirement analysis, specification, and validation.
 
+2.	Development: This stage focused on writing the code for the Arduino micro-controller to achieve the project's objectives. In essence, this phase transformed the system specifications into a functional system.
+
+3.	Validation: During this stage, comprehensive checks were conducted to ensure the system's functionalities aligned with the established specifications. This involved rigorous testing and verification processes.
+4.	Maintenance: This practice allows for ongoing modifications to the software even after the system's initial construction. The C++ programming language provided the foundation for code development throughout the project.
 <!--
 ## Included Features
 1. Express.js: Handles HTTP requests and serves as the backend framework.
