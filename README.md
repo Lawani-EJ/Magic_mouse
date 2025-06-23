@@ -283,6 +283,12 @@ These practices included the following:
 
 3.	Validation: During this stage, comprehensive checks were conducted to ensure the system's functionalities aligned with the established specifications. This involved rigorous testing and verification processes.
 4.	Maintenance: This practice allows for ongoing modifications to the software even after the system's initial construction. The C++ programming language provided the foundation for code development throughout the project.
+
+## SOFTWARE TESTING
+During setup, the code initializes communication with a computer and configures the button pins as inputs. The main loop continuously monitors the main button. If the button is released after being held for more than 2 seconds, a "help" signal is sent. When pressed, the button counter is increased, the press time is recorded. A short delay prevents misinterpreting switch bounces as multiple presses.
+The code also checks for submit button presses. If pressed while not already submitted, the counter value is stored, and a delay prevents accidental double submissions. The "repeat mode" flag determines the response. In repeat mode, pressing submit again sends the counter value and resets everything. Otherwise, on the first short press, a long press (over 3 seconds) enables repeat mode, while a short press sends the counter value. Subsequent short presses after the first send a "next" signal, likely for navigating questions.
+Finally, the code checks if the main button is released after a long hold (over 3 seconds) and sends a "help" signal if so. It also checks for a press on the repeat button, enabling repeat mode if pressed.
+
 <!--
 ## Included Features
 1. Express.js: Handles HTTP requests and serves as the backend framework.
