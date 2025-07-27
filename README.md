@@ -10,9 +10,11 @@
     </a>
 </p>
 
-# BABCOCK UNIVERSITY FINAL YEAR PROJECT
+<h1 align="center"> BABCOCK UNIVERSITY FINAL YEAR PROJECT </h1>
+
 ###  SUBMITTED TO: 
-THE DEPARTMENT OF COMPUTER SCIENCE SCHOOL OF COMPUTING AND ENGINEERING SCIENCES BABCOCK UNIVERSITY, ILISAN REMO OGUN STATE, NIGERIA
+<h4 align="center"> THE DEPARTMENT OF COMPUTER SCIENCE SCHOOL OF COMPUTING AND ENGINEERING SCIENCES BABCOCK UNIVERSITY, ILISAN REMO OGUN STATE, NIGERIA </h4>
+
 ## Magic-Mouse (An Arduino Device used to Assist the Blind in Taking Examination on a Webpage)
 ### Our Overview 
 The project mainly focused on building an Arduino-based system designed to assist visually impaired students during examinations was conducted on a webpage.
