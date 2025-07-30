@@ -348,3 +348,9 @@ Feel free to fork and contribute to this project by creating pull requests.
 
 The hardware was implemented with a container for the Arduino uno, buttons, jumper wires and breadboard. The different components used were tested in this process and the ones that were seen to be the best fit was used. 
 After the expected results were gotten from the components working together to ensure firm connection, the jumper wires connected to the buttons were mounted by being soldered with the soldering iron as represented in Figure Different tests were run after to ensure all components were working and not damaged by the heat from the soldering.
+
+## System Testiing
+Throughout the development process, both the software and hardware underwent rigorous evaluation to ensure they aligned with the project's predetermined requirements. Following successful construction, these components were integrated to assess their combined functionality against the established specifications. Specialized tools were employed to verify various system parameters, while debugging practices ensured the overall development process remained accurate.
+
+<img width="3990" height="2442" alt="image" src="https://github.com/user-attachments/assets/8490ee6a-d8aa-431c-85d5-1284937e6e2b" />
+
