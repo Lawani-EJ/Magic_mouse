@@ -341,3 +341,10 @@ node testSerial.js
 ## Contribution
 Feel free to fork and contribute to this project by creating pull requests.
 -->
+
+## Hardware Testing
+
+<img width="3054" height="2442" alt="image" src="https://github.com/user-attachments/assets/1a15a298-43b0-43b3-b17c-e96d5132b997" />
+
+The hardware was implemented with a container for the Arduino uno, buttons, jumper wires and breadboard. The different components used were tested in this process and the ones that were seen to be the best fit was used. 
+After the expected results were gotten from the components working together to ensure firm connection, the jumper wires connected to the buttons were mounted by being soldered with the soldering iron as represented in Figure Different tests were run after to ensure all components were working and not damaged by the heat from the soldering.
